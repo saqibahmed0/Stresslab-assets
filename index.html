@@ -239,13 +239,15 @@ nav {
 .pub-doi:hover { color: var(--ac); border-color: var(--ac); }
 
 /* ═══════════════════ NEWS ═══════════════════ */
-.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; align-items: start; }
-.news-card { background: var(--bg2); border: 1px solid var(--bo); border-radius: var(--r); padding: 1.6rem; display: flex; flex-direction: column; transition: all .2s; cursor: pointer; }
+.news-grid { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; max-width: 780px; }
+.news-card { background: var(--bg2); border: 1px solid var(--bo); border-radius: var(--r); padding: 1.4rem 1.6rem; display: grid; grid-template-columns: 160px 1fr; gap: 1.25rem; align-items: start; transition: all .2s; cursor: pointer; }
 .news-card:hover { border-color: var(--boa); box-shadow: var(--shadow); transform: translateY(-2px); }
-.news-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 5px; margin-bottom: .85rem; display: block; }
-.news-date { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ac); margin-bottom: 0.75rem; }
-.news-title { font-weight: 600; font-size: 1rem; line-height: 1.4; margin-bottom: 0.55rem; flex: 1; }
-.news-excerpt { font-size: 0.83rem; color: var(--mu); line-height: 1.65; margin-bottom: 1rem; }
+.news-card img { width: 160px; height: 110px; object-fit: cover; border-radius: 6px; display: block; }
+.news-card-body { display: flex; flex-direction: column; }
+.news-date { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ac); margin-bottom: 0.4rem; }
+.news-title { font-weight: 600; font-size: .95rem; line-height: 1.4; margin-bottom: 0.4rem; }
+.news-excerpt { font-size: 0.82rem; color: var(--mu); line-height: 1.6; margin-bottom: .6rem; }
+.news-tag { font-family: 'DM Mono', monospace; font-size: 0.63rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ac); background: var(--ac-light); border-radius: 4px; padding: 0.18rem 0.5rem; width: fit-content; margin-top: auto; }
 .news-tag { font-family: 'DM Mono', monospace; font-size: 0.63rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ac); background: var(--ac-light); border-radius: 4px; padding: 0.18rem 0.5rem; width: fit-content; margin-top: auto; }
 
 /* ═══════════════════ JOIN ═══════════════════ */
@@ -744,31 +746,45 @@ footer {
   <div class="eyebrow">News</div>
   <h1 class="page-title">Latest <em>News</em></h1>
   <div class="news-grid">
-    <div class="news-card">
-      <div class="news-date">March 2026</div>
-      <div class="news-title">New Paper in Scientific Reports: HSF-1 and ER Stress</div>
-      <div class="news-excerpt">Our study showing HSF-1 is required for efficient UPR<sub>ER</sub> activation in <em>C. elegans</em> — conserved in human cells — is now published. Congratulations to all co-authors!</div>
-      <span class="news-tag">Publication</span>
+    <div class="news-card" onclick="window.open('https://www.nature.com/articles/s41598-026-43060-3','_blank')" style="cursor:pointer;">
+      <div class="news-card-body" style="grid-column:1/-1;">
+        <div class="news-date">March 2026</div>
+        <div class="news-title">New Paper in Scientific Reports: HSF-1 and ER Stress</div>
+        <div class="news-excerpt">Our study showing HSF-1 is required for efficient UPR<sub>ER</sub> activation in <em>C. elegans</em> — conserved in human cells — is now published. Congratulations to all co-authors!</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;">
+          <span class="news-tag">Publication</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.68rem;color:var(--ac);">Read article ↗</span>
+        </div>
+      </div>
     </div>
     <div class="news-card" onclick="openModal()" style="cursor:pointer;">
       <img src="https://raw.githubusercontent.com/saqibahmed0/Stresslab-assets/main/ELTE_Tudom%C3%A1nyos_Kutat%C3%A1s_Napja_2024_035.JPG" alt="Dániel Kovács receiving the Joseph Cours Scholarship" onerror="this.style.display='none'">
-      <div class="news-date">2024</div>
-      <div class="news-title">Dániel Kovács Receives the Joseph Cours Scholarship (2024)</div>
-      <div class="news-excerpt">Congratulations to Dániel on receiving this prestigious ELTE scholarship in recognition of his doctoral research in stress biology.</div>
-      <span class="news-tag">Award</span>
+      <div class="news-card-body">
+        <div class="news-date">2024</div>
+        <div class="news-title">Dániel Kovács Receives the Joseph Cours Scholarship (2024)</div>
+        <div class="news-excerpt">Congratulations to Dániel on receiving this prestigious ELTE scholarship in recognition of his doctoral research in stress biology.</div>
+        <span class="news-tag">Award</span>
+      </div>
     </div>
     <div class="news-card" onclick="openEWMModal()" style="cursor:pointer;">
       <img src="https://raw.githubusercontent.com/saqibahmed0/Stresslab-assets/main/EWM%20(1).jpeg" alt="European Worm Meeting Utrecht" onerror="this.style.display='none'">
-      <div class="news-date">July 2024</div>
-      <div class="news-title">Stress Biology Lab at European Worm Meeting — Utrecht, Netherlands</div>
-      <div class="news-excerpt">Our team travelled to Utrecht, the Netherlands, to attend the European <em>C. elegans</em> Meeting. A great opportunity to present our work, exchange ideas, and connect with colleagues from across Europe.</div>
-      <span class="news-tag">Conference</span>
+      <div class="news-card-body">
+        <div class="news-date">July 2024</div>
+        <div class="news-title">Stress Biology Lab at European Worm Meeting — Utrecht, Netherlands</div>
+        <div class="news-excerpt">Our team travelled to Utrecht, the Netherlands, to attend the European <em>C. elegans</em> Meeting. A great opportunity to present our work, exchange ideas, and connect with colleagues from across Europe.</div>
+        <span class="news-tag">Conference</span>
+      </div>
     </div>
-    <div class="news-card">
-      <div class="news-date">October 2024</div>
-      <div class="news-title">Aging Cell Paper on HSF-1 Hormesis Published</div>
-      <div class="news-excerpt">Our discovery that HSF-1 deficiency paradoxically increases thermotolerance in young <em>C. elegans</em> is published in <em>Aging Cell</em>.</div>
-      <span class="news-tag">Publication</span>
+    <div class="news-card" onclick="window.open('https://onlinelibrary.wiley.com/doi/full/10.1111/acel.14246','_blank')" style="cursor:pointer;">
+      <div class="news-card-body" style="grid-column:1/-1;">
+        <div class="news-date">October 2024</div>
+        <div class="news-title">Aging Cell Paper on HSF-1 Hormesis Published</div>
+        <div class="news-excerpt">Our discovery that HSF-1 deficiency paradoxically increases thermotolerance in young <em>C. elegans</em> is published in <em>Aging Cell</em>.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;">
+          <span class="news-tag">Publication</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.68rem;color:var(--ac);">Read article ↗</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
